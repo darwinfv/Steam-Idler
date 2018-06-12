@@ -24,7 +24,7 @@ const string path = "C:\\Program Files (x86)\\Steam\\";
 
 int main(int argc, char ** argv) {
 	
-	int app;
+	string app;
 	string abs = "steamapps\\common\\Team Fortress 2\\";
 	abs = path + abs;
 	
@@ -32,7 +32,8 @@ int main(int argc, char ** argv) {
 	struct dirent *ent;
 	if ((dir = opendir (abs.c_str())) != NULL) {
 		closedir(dir);
-		cout<<"Enter App ID: ";
+		if(argc == 1)
+			cout<<"Enter App ID: ";
 	}
 	else {
 	  cout<<"ERROR: Incorrect path specified";
@@ -40,7 +41,11 @@ int main(int argc, char ** argv) {
 	  exit(1);
 	}
 	
-	cin>>app;
+	if(argc > 1)
+		app = argv[1];
+	else
+		cin>>app;
+	
 	string steam = abs + "steam_appid.txt";
 
 	ofstream f;
@@ -57,7 +62,6 @@ int main(int argc, char ** argv) {
     
     string exe = abs + "hl2.exe";
     ShellExecute(NULL, "open", exe.c_str(), NULL, NULL, SW_SHOWDEFAULT);
-	
-	getch();
-	
+    cout<<"Idling App "<<app<<" successfully.";
+    	
 }
