@@ -3,14 +3,17 @@
 
 	const key = "DE783384768F713588C69088F368AD58";
 	const http = "http://api.steampowered.com/";
-	"<interface name>/<method name>/v<version>/?key=<api key>";
+	const id = "76561198052935979/";
 
-	var link = http + "IPlayerService/GetOwnedGames/v0001/?key=" + key + "&steamid=76561197960434622";
+	var link = http + "IPlayerService/GetOwnedGames/v0001/?key=" + key + "&steamid=" + id;
+	console.log(link);
 	
-	axios.get(link)
+	axios.get("https://steamcommunity.com/profiles/76561198052935979/badges/")
 		.then((response) => {
 			if(response.status === 200) {
-				var response = response.data;
+				console.log(response.data);
+				// var info = response.data;
+				// console.log(info.response.games);
 			}
 			else
 				console.log("Response code: " + response.status);
