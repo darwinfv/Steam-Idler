@@ -1,6 +1,7 @@
 
 	const axios = require('axios');
 	const cheerio = require('cheerio');
+	const http = require('http');
 
 	axios.get("https://steamcommunity.com/profiles/76561198052935979/badges/?sort=p")
 		.then((response) => {
@@ -12,7 +13,9 @@
 					// var drops = $(this).find('.card_drop_info_header').text();
 					let appid = $(this).find('.badge_row_overlay').attr('href');
 					if(appid.includes("gamecards")) {
-						console.log(appid);
+						appid = appid.substring(appid.lastIndexOf("/", appid.length - 2) + 1, appid.length - 1);
+						let drops = $(this).find('.progress_info_bold').text();
+						console.log(drops);
 					}
 				});
 			}
