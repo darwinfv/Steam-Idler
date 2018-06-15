@@ -1,26 +1,36 @@
 
+	const axios = require('axios');
 	const cheerio = require('cheerio');
+	const http = require('http');
 	const fs = require('fs');
+	const path = require('path');
+	const util = require('util');
+	const index = require('./badge_index.html');
 
-	let games = [];
+	axios.get("https://steamcommunity.com/profiles/76561198052935979/badges/?sort=p")
+		.then((response) => {
+			if(response.status === 200) {
+				fs.readFile('./badge_index.html', function(err, data) {
 
-	fs.readFile('./badge_index.html', 'utf8', function (err, data) {
-		if(err) throw err;
-		const $ = cheerio.load(data);
-		var n = 0;
-		$('.badge_title_stats_drops').each(function(i, elem) {
-			let drops = $(this).find('.progress_info_bold').text();
-			drops = drops.substring(0, 1);
-			if(drops != "" && drops != undefined && drops != null && drops != "N") {
-				let info = $(this).find('a').attr('href');
-				let name = info.substring(30, info.indexOf("\"", 31));
-				let appid = info.substring(info.lastIndexOf("_", info.length - 9) + 1, info.length - 8);
-				games[n] = [];
-				games[n][0] = drops;
-				games[n][1] = name;
-				games[n][2] = appid;
-				n++;
+					const $ = cheerio.load(data);
+				});
+
+				// console.log($('span').length);//each(function(i, elem) {
+					// var drops = $(this).find().children('.progress_info_bold').text();
+					// var drops = $(this).find('.card_drop_info_header').text();
+					// let appid = $(this).find('.progress_info_bold').text();
+					// let appid = $(this).text();
+					// let appid = $(this).text();
+					// if(appid.includes("gamecards")) {
+						// appid = appid.substring(appid.lastIndexOf("/", appid.length - 2) + 1, appid.length - 1);
+						// let drops = $('.badge_title_stats_drops')./*find($('span')).*/length;
+						// $(this).children('.badge_row_inner')
+						// console.log(appid);
+					// }
+				// });
 			}
-		});
-		console.log(games);
-	});
+			else {
+				console.log("Response code: " + response.status);
+			}
+		}, (error) => console.log(err) );
+
