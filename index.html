@@ -2,14 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Steam Idler</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Mobile -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -28,26 +24,42 @@
       });
     </script>
 
+    <style>
+      .container { width: 399px !important; 
+    </style>
+
   </head>
 
   <body>
-    <br><br>
+    <br>
     <div class="row container">
 
-      <div class="col-sm-6">
-        <form class="form-inline">
+      <div class="col-xs-12">
+        <form class="form-horizontal">
           <div class="form-group">
-            <label>Path</label>
-            <input id="path" type="text" class="form-control" name="path" value="C:\Program Files (x86)\Steam\steamapp\common\Team Fortress 2\">
+            <label class="control-label col-xs-3">Path</label>
+            <div class="col-xs-8">
+              <input name="path" type="text" class="form-control" id="path" value="C:\Program Files (x86)\Steam\steamapp\common\Team Fortress 2\">
+            </div>
           </div>
-          <div class="input-group">
-            <label>.exe</label>
-            <input id="exe" type="text" class="form-control" name="exe" value="hl2.exe">
+          <div class="form-group">
+            <label class="control-label col-xs-3">.exe</label>
+            <div class="col-xs-8">
+              <input name="exe" type="text" class="form-control" id="exe" value="hl2.exe">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-xs-3">Idle app</label>
+            <div class="col-xs-4">
+              <input name="appid" type="text" class="form-control" id="appid" placeholder="440">
+            </div>
+            <div class="col-xs-4">
+            <button type="button" 
+            </div>
           </div>
         </form>
-      </div>
 
-      <div class="col-sm-6">
+
 
       </div>
 
