@@ -29,3 +29,6 @@
 # Executables
 *.out
 *.app
+
+# Node Modules
+node_modules/

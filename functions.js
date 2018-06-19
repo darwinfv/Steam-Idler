@@ -12,10 +12,18 @@
             ;
             return;
         }
-        console.log(appid);
-        
-        var oShell = new ActiveXObject("Shell.Application");
-        var commandtoRun = ".\\execute.sh"; 
-        oShell.ShellExecute(commandtoRun,"","","open","1");
 
+        var exec = require('child_process').exec, child;
+
+        child = exec('.\\execute.sh ' + appid + ' ' + path + ' ' + exe,
+            function (error, stdout, stderr) {
+                console.log('stdout: ' + stdout);
+                console.log('stderr: ' + stderr);
+                if (error !== null) {
+                     console.log('exec error: ' + error);
+                }
+            });
+
+        
     }
+
