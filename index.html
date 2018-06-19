@@ -17,16 +17,11 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <!-- Enable tooltips -->
-    <script>
-      $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip(); 
-      });
-    </script>
-
     <style>
       .container { width: 399px !important; 
     </style>
+
+    <script type="text/javascript" src="./functions.js"></script>
 
   </head>
 
@@ -43,18 +38,18 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="control-label col-xs-3">.exe</label>
+            <label class="control-label col-xs-3">Executable</label>
             <div class="col-xs-8">
               <input name="exe" type="text" class="form-control" id="exe" value="hl2.exe">
             </div>
           </div>
           <div class="form-group">
-            <label class="control-label col-xs-3">Idle app</label>
+            <label class="control-label col-xs-3">App ID</label>
             <div class="col-xs-4">
               <input name="appid" type="text" class="form-control" id="appid" placeholder="440">
             </div>
             <div class="col-xs-4">
-            <button type="button" 
+              <button onclick="idleSingle()" type="button" class="btn">Idle</button>
             </div>
           </div>
         </form>
