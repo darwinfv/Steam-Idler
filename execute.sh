@@ -1,5 +1,7 @@
 #!/bin/bash
-if [ $# -eq 1 ]; then
+if [ $# -eq 0 ]; then
+	exit 1
+elif [ $# -eq 1 ]; then
 	./idle.exe $1
 elif [ $# -eq 2 ]; then
 	./idle.exe $1 $2

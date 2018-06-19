@@ -14,11 +14,8 @@
         }
         console.log(appid);
         
-        // var oShell = new ActiveXObject("Shell.Application");
-        // var commandtoRun = "C:\\Windows\\notepad.exe"; 
-        // oShell.ShellExecute(commandtoRun,"","","open","1");
-
-
-
+        var oShell = new ActiveXObject("Shell.Application");
+        var commandtoRun = ".\\execute.sh"; 
+        oShell.ShellExecute(commandtoRun,"","","open","1");
 
     }
