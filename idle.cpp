@@ -6,62 +6,48 @@
 #include <windows.h>
 using namespace std;
 
-const string path = "C:\\Program Files (x86)\\Steam\\";
-
-//void startup (LPCTSTR lpApplicationName) {
-//	STARTUPINFO si;
-//	PROCESS_INFORMATION pi;
-//	
-//	ZeroMemory( &si, sizeof(si) );
-//	si.cb = sizeof(si);
-//	ZeroMemory( &pi, sizeof(pi) );
-//	
-//	CreateProcess( lpApplicationName, "idle", NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi );
-//	
-//	CloseHandle( pi.hProcess );
-//    CloseHandle( pi.hThread );
-//}
-
 int main(int argc, char ** argv) {
 	
-	string app;
-	string abs = "steamapps\\common\\Team Fortress 2\\";
-	abs = path + abs;
+	string app; // arg 1
+	string exe = "hl2.exe"; // arg 3
+	string path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Team Fortress 2\\"; // arg 2
+	
+	if(argc == 1) {
+		exit(1); // lack of arguments
+	}	
+	if(argc > 1) {
+		app = argv[1];
+	}
+	if(argc > 2) {
+		path = argv[2];
+	}
+	if(argc > 3) {
+		exe = argv[3];
+	}
 	
 	DIR *dir;
 	struct dirent *ent;
-	if ((dir = opendir (abs.c_str())) != NULL) {
+	if ((dir = opendir (path.c_str())) != NULL) {
 		closedir(dir);
-		if(argc == 1)
-			cout<<"Enter App ID: ";
 	}
 	else {
-	  cout<<"ERROR: Incorrect path specified";
-	  getch();
-	  exit(1);
+		exit(2); // incorrect path, directory doesn't exist
 	}
 	
-	if(argc > 1)
-		app = argv[1];
-	else
-		cin>>app;
-	
-	string steam = abs + "steam_appid.txt";
+	string steam = path + "steam_appid.txt";
 
 	ofstream f;
 	f.open(steam.c_str(), ios::trunc);
 	if (!f) {
-        cout<<"ERROR: Unable to open file";
-        getch();
-        exit(1);
+        exit(3); // steam_appid.txt not found
     }
     
     f<<app;
     f<<" ";
     f.close();
     
-    string exe = abs + "hl2.exe";
+    exe = path + exe;
     ShellExecute(NULL, "open", exe.c_str(), NULL, NULL, SW_SHOWDEFAULT);
-    cout<<"Idling App "<<app<<" successfully.";
+    exit(0);
     	
 }
