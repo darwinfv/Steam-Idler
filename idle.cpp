@@ -10,7 +10,7 @@ int main(int argc, char ** argv) {
 	
 	string app; // arg 1
 	string exe = "hl2.exe"; // arg 3
-	string path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Team Fortress 2\\"; // arg 2
+	string path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\The Lab\\"; // arg 2
 	
 	if(argc == 1) {
 		exit(1); // lack of arguments
