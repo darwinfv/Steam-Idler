@@ -4,13 +4,19 @@
 #include <fstream>
 #include <dirent.h>
 #include <windows.h>
+#include <sys/stat.h>
 using namespace std;
+
+inline bool exists (const string name) {
+  struct stat buffer;   
+  return (stat (name.c_str(), &buffer) == 0); 
+}
 
 int main(int argc, char ** argv) {
 	
 	string app; // arg 1
 	string exe = "hl2.exe"; // arg 3
-	string path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\The Lab\\"; // arg 2
+	string path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Team Fortress 2\\"; // arg 2
 	
 	if(argc == 1) {
 		exit(1); // lack of arguments
@@ -35,18 +41,25 @@ int main(int argc, char ** argv) {
 	}
 	
 	string steam = path + "steam_appid.txt";
+	
+	ifstream i;
+	i.open(steam.c_str());
+	if(!i) {
+		exit(3); // steam_appid.txt not found
+	}
 
 	ofstream f;
 	f.open(steam.c_str(), ios::trunc);
-	if (!f) {
-        exit(3); // steam_appid.txt not found
-    }
     
     f<<app;
     f<<" ";
     f.close();
     
     exe = path + exe;
+    if(!exists(exe)) {
+    	exit(4); // executable not found
+    }
+    
     ShellExecute(NULL, "open", exe.c_str(), NULL, NULL, SW_SHOWDEFAULT);
     exit(0);
     	
