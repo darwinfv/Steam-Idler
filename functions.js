@@ -39,14 +39,23 @@
         }
 
         var exec = require('child_process').exec, child;
+        const fs = require('fs');
 
-        child = exec('.\\execute.sh ' + appid + ' \"' + path + '\" \"' + exe + '\"',
+        child = exec('.\\checkFile.exe',
             function (error, stdout, stderr) {
                 console.log('stdout: ' + stdout);
                 console.log('stderr: ' + stderr);
                 if (error !== null) {
                      console.log('exec error: ' + error);
                 }
+                fs.readFile('.\\info.txt', 'utf8', function (err, data) {
+                    if(err) throw err;
+                    if(data == 1) {
+                        $('#alert').html("File missing: 'badges.html'");
+                        $('#alert').show();
+                        return;
+                    }
+                });
             });
     }
 

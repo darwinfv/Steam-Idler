@@ -13,3 +13,5 @@ elif [ $# -eq 3 ]; then
 	./idle.exe $1 $2 $3
 fi
 echo $? >> info.txt
+
+#backslash

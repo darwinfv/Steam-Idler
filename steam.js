@@ -4,7 +4,7 @@
 
 	let games = [];
 
-	fs.readFile('./badge_index.html', 'utf8', function (err, data) {
+	fs.readFile('.\\badges.html', 'utf8', function (err, data) {
 		if(err) throw err;
 		const $ = cheerio.load(data);
 		var n = 0;
