@@ -28,6 +28,9 @@
 
     }
 
+    let games = [];
+    let c = -1;
+
     function idleAll() {
         var path = document.getElementById("path").value;
         var exe = document.getElementById("exe").value;
@@ -41,8 +44,6 @@
         var exec = require('child_process').exec, child;
         const fs = require('fs');
         const cheerio = require('cheerio');
-
-        let games = [];
 
         child = exec('.\\checkFile.exe',
             function (error, stdout, stderr) {
@@ -77,10 +78,21 @@
                                     n++;
                                 }
                             });
-                            console.log(games);
+                            next();
                         });
                     }
                 });
             });
     }
 
+    function next() {
+        c++;
+
+
+
+
+
+
+        $('#alert').html("Idling " + games[c][1]);
+        $('#alert').show();
+    }
