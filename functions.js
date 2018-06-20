@@ -9,7 +9,8 @@
         var exe = document.getElementById("exe").value;
         var appid = document.getElementById("appid").value;
         if(appid == "") {
-            ;
+            $('#alert').html("App ID is required");
+            $('#alert').show();
             return;
         }
 
@@ -32,7 +33,8 @@
         var exe = document.getElementById("exe").value;
         var appid = document.getElementById("appid").value;
         if(appid == "") {
-            ;
+            $('#alert').html("App ID is required");
+            $('#alert').show();
             return;
         }
 
