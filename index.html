@@ -14,7 +14,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <style>
-      .container { width: 399px !important; 
+      .container { width: 379px !important; 
     </style>
 
     <script type="text/javascript" src="./functions.js"></script>
@@ -42,11 +42,14 @@
           <div class="form-group">
             <label class="control-label col-xs-3">App ID</label>
             <div class="col-xs-4">
-              <input name="appid" type="number" class="form-control" id="appid" placeholder="440" min="10" step="10">
+              <input name="appid" type="number" class="form-control" id="appid" placeholder="440" min="10" step="10" required="required">
             </div>
             <div class="col-xs-4">
               <button onclick="idleSingle()" type="button" class="btn">Idle</button>
             </div>
+          </div>
+          <div class="form-group">
+            <button onclick="idleAll()" type="button" class="btn btn-block" style="margin-left:7px">Idle All Games</button>
           </div>
         </form>
 
