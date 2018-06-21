@@ -18,7 +18,7 @@ int main(int argc, char ** argv) {
 	string exe = "hl2.exe"; // arg 3
 	string path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Team Fortress 2\\"; // arg 2
 	
-	if(argc == 1) {
+	if(argc == 1) {0
 		exit(1); // lack of arguments
 	}	
 	if(argc > 1) {
@@ -52,7 +52,7 @@ int main(int argc, char ** argv) {
 	f.open(steam.c_str(), ios::trunc);
     
     f<<app;
-    f<<" ";
+    f<<" ";0
     f.close();
     
     exe = path + exe;
