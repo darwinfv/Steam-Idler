@@ -18,15 +18,14 @@
 
         var exec = require('child_process').exec, child;
 
-        child = exec('.\\execute.sh ' + appid + ' \"' + path + '\" \"' + exe + '\"',
-            function (error, stdout, stderr) {
-                console.log('stdout: ' + stdout);
-                console.log('stderr: ' + stderr);
-                if (error !== null) {
-                     console.log('exec error: ' + error);
-                }
-            });
-
+        // child = exec('.\\execute.sh ' + appid + ' \"' + path + '\" \"' + exe + '\"',
+        //     function (error, stdout, stderr) {
+        //         console.log('stdout: ' + stdout);
+        //         console.log('stderr: ' + stderr);
+        //         if (error !== null) {
+        //              console.log('exec error: ' + error);
+        //         }
+        //     });
 
     }
 
@@ -96,6 +95,7 @@
     function run(appid, path, exe) {
 
         var exec = require('child_process').exec, child;
+        const fs = require('fs');
 
         if(path == "" || path == null || path == undefined) {
             child = exec('.\\idle.exe ' + appid,
@@ -118,7 +118,7 @@
                 });
         }
         else {
-            child = exec('.\\idle.exe ' + appid + ' ' + path + ' ' + exe,
+            child = exec('.\\idle.exe ' + appid + ' \"' + path + '\" ' + exe,
                 function (error, stdout, stderr) {
                     console.log('stdout: ' + stdout);
                     console.log('stderr: ' + stderr);
@@ -139,11 +139,11 @@
                 $('#alert').show();
             }
             else if(data == 3) {
-                $('#alert').html("File 'steam_appid.txt' not found in given directory");
+                $('#alert').html("File \'steam_appid.txt\' not found in given directory");
                 $('#alert').show();
             }
             else if(data == 4) {
-                $('#alert').html("File '" + exe + "'not found in given directory");
+                $('#alert').html("File \'" + exe + "\'not found in given directory");
                 $('#alert').show();
             }
             else if(data == 0) {
