@@ -12,6 +12,13 @@ inline bool exists (const string name) {
   return (stat (name.c_str(), &buffer) == 0); 
 }
 
+inline void write(int code) {
+	ofstream i;
+	i.open("info.txt");
+	i<<code;
+	i.close();
+}
+
 int main(int argc, char ** argv) {
 	
 	string app; // arg 1
@@ -19,8 +26,9 @@ int main(int argc, char ** argv) {
 	string path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Team Fortress 2\\"; // arg 2
 	
 	if(argc == 1) {
+		write(1);
 		exit(1); // lack of arguments
-	}	
+	}
 	if(argc > 1) {
 		app = argv[1];
 	}
@@ -37,6 +45,7 @@ int main(int argc, char ** argv) {
 		closedir(dir);
 	}
 	else {
+		write(2);
 		exit(2); // incorrect path, directory doesn't exist
 	}
 	
@@ -45,6 +54,7 @@ int main(int argc, char ** argv) {
 	ifstream i;
 	i.open(steam.c_str());
 	if(!i) {
+		write(3);
 		exit(3); // steam_appid.txt not found
 	}
 
@@ -57,10 +67,12 @@ int main(int argc, char ** argv) {
     
     exe = path + exe;
     if(!exists(exe)) {
+    	write(4);
     	exit(4); // executable not found
     }
     
     ShellExecute(NULL, "open", exe.c_str(), NULL, NULL, SW_SHOWDEFAULT);
+    write(0);
     exit(0);
     	
 }

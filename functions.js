@@ -135,15 +135,15 @@
                 $('#alert').show();
             }
             else if(data == 2) {
-                $('#alert').html("");
+                $('#alert').html("Incorrect path; Directory does not exist");
                 $('#alert').show();
             }
             else if(data == 3) {
-                $('#alert').html("Idling app " + appid + " successfully");
+                $('#alert').html("File 'steam_appid.txt' not found in given directory");
                 $('#alert').show();
             }
             else if(data == 4) {
-                $('#alert').html("Idling app " + appid + " successfully");
+                $('#alert').html("File '" + exe + "'not found in given directory");
                 $('#alert').show();
             }
             else if(data == 0) {
