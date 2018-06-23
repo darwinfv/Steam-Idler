@@ -24,6 +24,10 @@
                 if (error !== null) {
                      console.log('exec error: ' + error);
                 }
+                fs.readFile('.\\info.txt', 'utf8', function (err, data) {
+		            if(err) throw err;
+					console.log(data);
+		        });
             });
     }
     else {
