@@ -105,6 +105,7 @@
                     if (error !== null) {
                          console.log('exec error: ' + error);
                     }
+                    printAlert(appid);
                 });
         }
         else if(exe == "" || exe == null || exe == undefined) {
@@ -115,6 +116,7 @@
                     if (error !== null) {
                          console.log('exec error: ' + error);
                     }
+                    printAlert(appid);
                 });
         }
         else {
@@ -125,9 +127,14 @@
                     if (error !== null) {
                          console.log('exec error: ' + error);
                     }
+                    printAlert(appid);
                 });
         }
 
+    }
+
+    function printAlert(appid) {
+        const fs = require('fs');
         fs.readFile('.\\info.txt', 'utf8', function (err, data) {
             if(err) throw err;
             if(data == 1) {
@@ -143,7 +150,7 @@
                 $('#alert').show();
             }
             else if(data == 4) {
-                $('#alert').html("File \'" + exe + "\'not found in given directory");
+                $('#alert').html("Executable not found in given directory");
                 $('#alert').show();
             }
             else if(data == 0) {
@@ -151,7 +158,6 @@
                 $('#alert').show();
             }
         });
-
     }
 
     // CEnemy.prototype.Walk = function(){this.Die(true);};

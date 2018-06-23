@@ -5,7 +5,7 @@ exe=""
 #"hl2.exe";
 appid=65930
 
-.\\idle.exe $appid
+.\\idle.exe $appid $path
 
 echo
 echo
