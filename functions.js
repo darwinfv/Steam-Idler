@@ -100,8 +100,8 @@
         if(path == "" || path == null || path == undefined) {
             child = exec('.\\idle.exe ' + appid,
                 function (error, stdout, stderr) {
-                    console.log('stdout: ' + stdout);
-                    console.log('stderr: ' + stderr);
+                    // console.log('stdout: ' + stdout);
+                    // console.log('stderr: ' + stderr);
                     if (error !== null) {
                          console.log('exec error: ' + error);
                     }
@@ -111,8 +111,8 @@
         else if(exe == "" || exe == null || exe == undefined) {
             child = exec('.\\idle.exe ' + appid + ' ' + path,
                 function (error, stdout, stderr) {
-                    console.log('stdout: ' + stdout);
-                    console.log('stderr: ' + stderr);
+                    // console.log('stdout: ' + stdout);
+                    // console.log('stderr: ' + stderr);
                     if (error !== null) {
                          console.log('exec error: ' + error);
                     }
@@ -122,8 +122,8 @@
         else {
             child = exec('.\\idle.exe ' + appid + ' \"' + path + '\" ' + exe,
                 function (error, stdout, stderr) {
-                    console.log('stdout: ' + stdout);
-                    console.log('stderr: ' + stderr);
+                    // console.log('stdout: ' + stdout);
+                    // console.log('stderr: ' + stderr);
                     if (error !== null) {
                          console.log('exec error: ' + error);
                     }

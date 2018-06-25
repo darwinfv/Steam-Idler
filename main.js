@@ -13,7 +13,7 @@
   let win;
   
   function createWindow () {
-    win = new BrowserWindow({width: 380, height: 400});
+    win = new BrowserWindow({width: 380, height: 400, resizable: true});
     win.loadFile('index.html');
   
     win.webContents.openDevTools();
