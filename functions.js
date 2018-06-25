@@ -14,6 +14,8 @@
             return;
         }
 
+        if(path.endsWith("\\"))
+            path = path.substring(0, path.length - 1);
         run(appid, path, exe);
 
         var exec = require('child_process').exec, child;
@@ -35,6 +37,9 @@
     function idleAll() {
         var path = document.getElementById("path").value;
         var exe = document.getElementById("exe").value;
+
+        if(path.endsWith("\\"))
+            path = path.substring(0, path.length - 1);
 
         var exec = require('child_process').exec, child;
         const fs = require('fs');
@@ -109,7 +114,7 @@
                 });
         }
         else if(exe == "" || exe == null || exe == undefined) {
-            child = exec('.\\idle.exe ' + appid + ' ' + path,
+            child = exec('.\\idle.exe ' + appid + ' \"' + path + '\"',
                 function (error, stdout, stderr) {
                     // console.log('stdout: ' + stdout);
                     // console.log('stderr: ' + stderr);
@@ -122,8 +127,8 @@
         else {
             child = exec('.\\idle.exe ' + appid + ' \"' + path + '\" ' + exe,
                 function (error, stdout, stderr) {
-                    console.log('stdout: ' + stdout);
-                    console.log('stderr: ' + stderr);
+                    // console.log('stdout: ' + stdout);
+                    // console.log('stderr: ' + stderr);
                     if (error !== null) {
                          console.log('exec error: ' + error);
                     }

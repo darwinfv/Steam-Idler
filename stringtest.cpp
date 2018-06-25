@@ -11,7 +11,7 @@ inline string withSlash(string path) {
 }
 
 int main() {
-	string path = "something\\";
+	string path = "something";
 	
 	path = path.substr(0, path.length() - 1);
 	

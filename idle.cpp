@@ -19,6 +19,13 @@ inline void write(int code) {
 	i.close();
 }
 
+inline void print(string path) {
+	ofstream i;
+	i.open("test.txt");
+	i<<path;
+	i.close();
+}
+
 inline string withSlash(string path) {
 	if(path[path.length() - 1] == '\\')
 		return path;
@@ -52,7 +59,6 @@ int main(int argc, char ** argv) {
 	
 	if(path[path.length() - 1] == '\\')
 		path = path.substr(0, path.length() - 1);
-	cout<<path.c_str();
 	
 	DIR *dir;
 	struct dirent *ent;
