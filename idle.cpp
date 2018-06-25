@@ -19,6 +19,17 @@ inline void write(int code) {
 	i.close();
 }
 
+inline string withSlash(string path) {
+	if(path[path.length() - 1] == '\\')
+		return path;
+	else
+		return path + "\\";
+}
+
+inline string withoutSlash(string path) {
+	
+}
+
 int main(int argc, char ** argv) {
 	
 	string app; // arg 1
@@ -39,6 +50,10 @@ int main(int argc, char ** argv) {
 		exe = argv[3];
 	}
 	
+	if(path[path.length() - 1] == '\\')
+		path = path.substr(0, path.length() - 1);
+	cout<<path.c_str();
+	
 	DIR *dir;
 	struct dirent *ent;
 	if ((dir = opendir (path.c_str())) != NULL) {
@@ -49,6 +64,7 @@ int main(int argc, char ** argv) {
 		exit(2); // incorrect path, directory doesn't exist
 	}
 	
+	path = path + "\\";
 	string steam = path + "steam_appid.txt";
 	
 	ifstream i;
