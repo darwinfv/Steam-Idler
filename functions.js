@@ -14,21 +14,19 @@
             return;
         }
 
-        if(path.endsWith("\\"))
-            path = path.substring(0, path.length - 1);
-        run(appid, path, exe);
-
         var exec = require('child_process').exec, child;
 
-        // child = exec('.\\execute.sh ' + appid + ' \"' + path + '\" \"' + exe + '\"',
-        //     function (error, stdout, stderr) {
-        //         console.log('stdout: ' + stdout);
-        //         console.log('stderr: ' + stderr);
-        //         if (error !== null) {
-        //              console.log('exec error: ' + error);
-        //         }
-        //     });
-
+        child = exec('.\\exit.exe ' + exe,
+            function (error, stdout, stderr) {
+                console.log('stdout: ' + stdout);
+                console.log('stderr: ' + stderr);
+                if (error !== null) {
+                     console.log('exec error: ' + error);
+                }
+                if(path.endsWith("\\"))
+                    path = path.substring(0, path.length - 1);
+                run(appid, path, exe);
+            });
     }
 
     let games = [];
@@ -165,3 +163,34 @@
         });
     }
 
+    function reIdle() {
+
+        var path = document.getElementById("path").value;
+        var exe = document.getElementById("exe").value;
+
+        if(path.endsWith("\\"))
+            path = path.substring(0, path.length - 1);
+
+
+        var exec = require('child_process').exec, child;
+
+        child = exec('.\\exit.exe ' + exe,
+            function (error, stdout, stderr) {
+                console.log('stdout: ' + stdout);
+                console.log('stderr: ' + stderr);
+                if (error !== null) {
+                     console.log('exec error: ' + error);
+                }
+                child = exec('\"' + path + '\\' + exe + '\"',
+                    function (error, stdout, stderr) {
+                        console.log('stdout: ' + stdout);
+                        console.log('stderr: ' + stderr);
+                        if (error !== null) {
+                            console.log('exec error: ' + error);
+                        }
+                    });
+            });
+
+
+
+    }

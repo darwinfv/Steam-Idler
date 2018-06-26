@@ -27,18 +27,21 @@
 
       <div class="col-xs-12">
         <form class="form-horizontal">
+
           <div class="form-group">
             <label class="control-label col-xs-3">Path</label>
             <div class="col-xs-8">
               <input name="path" type="text" class="form-control" id="path" value="C:\Program Files (x86)\Steam\steamapps\common\Team Fortress 2">
             </div>
           </div>
+        
           <div class="form-group">
             <label class="control-label col-xs-3">Executable</label>
             <div class="col-xs-8">
               <input name="exe" type="text" class="form-control" id="exe" value="hl2.exe">
             </div>
           </div>
+        
           <div class="form-group">
             <label class="control-label col-xs-3">App ID</label>
             <div class="col-xs-4">
@@ -48,10 +51,17 @@
               <button onclick="idleSingle()" type="button" class="btn">Idle</button>
             </div>
           </div>
+        
           <div class="form-group">
             <button onclick="idleAll()" type="button" class="btn btn-block" style="margin-left:12px">Idle All Games</button>
           </div>
+        
           <div id="alert" class="alert alert-warning text-center" role="alert" style="margin-left:15px">Not Idling. Ready to Idle.</div>
+
+          <div class="form-group">
+            <button onclick="reIdle()" type="button" class="btn col-xs-3" style="margin-left:0px">Re-Idle</button>
+          </div>
+
         </form>
 
 
