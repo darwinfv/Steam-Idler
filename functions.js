@@ -83,16 +83,28 @@
             });
     }
 
-    function next() {
+    var timer;
+
+    function next(path, exe) {
         c++;
 
+        var exec = require('child_process').exec, child;
 
+        child = exec('.\\exit.exe ' + exe,
+            function (error, stdout, stderr) {
+                console.log('stdout: ' + stdout);
+                console.log('stderr: ' + stderr);
+                if (error !== null) {
+                     console.log('exec error: ' + error);
+                }
 
-
-
+                run(games[c][2], path, exe);
+            });
 
         $('#alert').html("Idling " + games[c][1]);
         $('#alert').show();
+
+        timer = setTimeout(next, path, exe, 1000 * 60 * 60 * 2);
     }
 
     function run(appid, path, exe) {
@@ -191,6 +203,19 @@
                     });
             });
 
+    }
 
+    function reload() {
+        clearTimeour(timer);
+        
+        var exec = require('child_process').exec, child;
 
+        child = exec('.\\exit.exe ' + exe,
+            function (error, stdout, stderr) {
+                console.log('stdout: ' + stdout);
+                console.log('stderr: ' + stderr);
+                if (error !== null) {
+                     console.log('exec error: ' + error);
+                }
+            });
     }
