@@ -165,6 +165,3 @@
         });
     }
 
-    // CEnemy.prototype.Walk = function(){this.Die(true);};
-
-    // https://steamcommunity.com/tradeoffer/new/?partner=92670251&token=K316vcVz
