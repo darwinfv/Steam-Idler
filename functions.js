@@ -97,7 +97,6 @@
                 if (error !== null) {
                      console.log('exec error: ' + error);
                 }
-
                 run(games[c][2], path, exe);
             });
 
