@@ -115,8 +115,8 @@
         if(path == "" || path == null || path == undefined) {
             child = exec('.\\idle.exe ' + appid,
                 function (error, stdout, stderr) {
-                    // console.log('stdout: ' + stdout);
-                    // console.log('stderr: ' + stderr);
+                    console.log('stdout: ' + stdout);
+                    console.log('stderr: ' + stderr);
                     if (error !== null) {
                          console.log('exec error: ' + error);
                     }
@@ -126,8 +126,8 @@
         else if(exe == "" || exe == null || exe == undefined) {
             child = exec('.\\idle.exe ' + appid + ' \"' + path + '\"',
                 function (error, stdout, stderr) {
-                    // console.log('stdout: ' + stdout);
-                    // console.log('stderr: ' + stderr);
+                    console.log('stdout: ' + stdout);
+                    console.log('stderr: ' + stderr);
                     if (error !== null) {
                          console.log('exec error: ' + error);
                     }
@@ -137,8 +137,8 @@
         else {
             child = exec('.\\idle.exe ' + appid + ' \"' + path + '\" ' + exe,
                 function (error, stdout, stderr) {
-                    // console.log('stdout: ' + stdout);
-                    // console.log('stderr: ' + stderr);
+                    console.log('stdout: ' + stdout);
+                    console.log('stderr: ' + stderr);
                     if (error !== null) {
                          console.log('exec error: ' + error);
                     }
@@ -182,7 +182,10 @@
 
         if(path.endsWith("\\"))
             path = path.substring(0, path.length - 1);
-
+        if(path == "" || path == null || path == undefined)
+            path = "C:\Program Files (x86)\Steam\steamapps\common\Team Fortress 2";
+        if(exe == null || exe == "" || exe == undefined)
+            exe = "hl2.exe";
 
         var exec = require('child_process').exec, child;
 
@@ -207,7 +210,7 @@
 
     function reload() {
         clearTimeour(timer);
-        
+
         var exec = require('child_process').exec, child;
 
         child = exec('.\\exit.exe ' + exe,
