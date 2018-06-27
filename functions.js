@@ -75,9 +75,8 @@
                                     games[n][2] = appid;
                                     n++;
                                 }
-                                console.log(games);
                             });
-                            setTimeout('next(path, exe)', 3000);
+                            next(path, exe);
                         });
                     }
                 });
@@ -101,8 +100,6 @@
                 if (error !== null) {
                      console.log('exec error: ' + error);
                 }
-
-                console.log(games);
                 run(games[c][2], path, exe);
             });
 
@@ -215,6 +212,7 @@
 
     function reload() {
         clearTimeout(timer);
+        var exe = document.getElementById("exe").value;
 
         var exec = require('child_process').exec, child;
 
