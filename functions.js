@@ -100,16 +100,13 @@
                 if (error !== null) {
                      console.log('exec error: ' + error);
                 }
-                run(games[c][2], path, exe);
+                run(games[c][2], path, exe, games[c][1]);
             });
-
-        $('#alert').html("Idling " + games[c][1]);
-        $('#alert').show();
 
         timer = setTimeout('next(path, exe)', 1000 * 60 * 60 * 2);
     }
 
-    function run(appid, path, exe) {
+    function run(appid, path, exe, game = null) {
 
         var exec = require('child_process').exec, child;
         const fs = require('fs');
@@ -122,7 +119,10 @@
                     if (error !== null) {
                          console.log('exec error: ' + error);
                     }
-                    printAlert(appid);
+                    if(game == null)
+                        printAlert(appid);
+                    else
+                        printAlert(game);
                 });
         }
         else if(exe == "" || exe == null || exe == undefined) {
@@ -133,7 +133,10 @@
                     if (error !== null) {
                          console.log('exec error: ' + error);
                     }
-                    printAlert(appid);
+                    if(game == null)
+                        printAlert(appid);
+                    else
+                        printAlert(game);
                 });
         }
         else {
@@ -144,7 +147,10 @@
                     if (error !== null) {
                          console.log('exec error: ' + error);
                     }
-                    printAlert(appid);
+                    if(game == null)
+                        printAlert(appid);
+                    else
+                        printAlert(game);
                 });
         }
 
@@ -171,7 +177,10 @@
                 $('#alert').show();
             }
             else if(data == 0) {
-                $('#alert').html("Idling app " + appid + " successfully");
+                if(isNaN(appid))
+                    $('#alert').html("Idling " + games[c][1]);
+                else
+                    $('#alert').html("Idling app " + appid + " successfully");
                 $('#alert').show();
             }
         });
