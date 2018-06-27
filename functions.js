@@ -75,8 +75,9 @@
                                     games[n][2] = appid;
                                     n++;
                                 }
+                                console.log(games);
                             });
-                            next(path, exe);
+                            setTimeout('next(path, exe)', 3000);
                         });
                     }
                 });
@@ -87,6 +88,9 @@
 
     function next(path, exe) {
         c++;
+        clearTimeout(timer);
+        var path = document.getElementById("path").value;
+        var exe = document.getElementById("exe").value;
 
         var exec = require('child_process').exec, child;
 
@@ -97,13 +101,15 @@
                 if (error !== null) {
                      console.log('exec error: ' + error);
                 }
+
+                console.log(games);
                 run(games[c][2], path, exe);
             });
 
         $('#alert').html("Idling " + games[c][1]);
         $('#alert').show();
 
-        timer = setTimeout(next, path, exe, 1000 * 60 * 60 * 2);
+        timer = setTimeout('next(path, exe)', 1000 * 60 * 60 * 2);
     }
 
     function run(appid, path, exe) {
@@ -182,7 +188,7 @@
         if(path.endsWith("\\"))
             path = path.substring(0, path.length - 1);
         if(path == "" || path == null || path == undefined)
-            path = "C:\Program Files (x86)\Steam\steamapps\common\Team Fortress 2";
+            path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Team Fortress 2";
         if(exe == null || exe == "" || exe == undefined)
             exe = "hl2.exe";
 
@@ -208,7 +214,7 @@
     }
 
     function reload() {
-        clearTimeour(timer);
+        clearTimeout(timer);
 
         var exec = require('child_process').exec, child;
 
@@ -220,4 +226,7 @@
                      console.log('exec error: ' + error);
                 }
             });
+
+        $('#alert').html("Not Idling. Ready to Idle.");
+        $('#alert').show();
     }
